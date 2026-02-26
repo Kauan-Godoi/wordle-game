@@ -26,4 +26,10 @@ async function iniciarJogo() {
     console.log("A palavra sorteada é: ", palavraSorteada);
 }
 
-iniciarJogo();
+if (typeof module !== 'undefined'){
+
+    module.exports = {
+        escolherPalavraAleatoria,
+        carregarDatabase
+    }
+}    
