@@ -78,3 +78,10 @@ const atualizarInterface = () => {
 };
 
 window.addEventListener("keydown", manipularTeclado);
+if (typeof module !== 'undefined'){
+
+    module.exports = {
+        escolherPalavraAleatoria,
+        carregarDatabase
+    }
+}    
