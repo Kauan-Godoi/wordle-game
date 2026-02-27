@@ -131,11 +131,4 @@ const verificaPalpite = () => {
 
 window.addEventListener("keydown", manipularTeclado);
 
-iniciarJogo();
-if (typeof module !== 'undefined'){
-
-    module.exports = {
-        escolherPalavraAleatoria,
-        carregarDatabase
-    }
-}    
+iniciarJogo();   
