@@ -95,6 +95,20 @@ const atualizaTeclado = (letra, classe) => {
     });
 };
 
+const botoesTeclado = document.querySelectorAll(".button");
+botoesTeclado.forEach((botao) => {
+    botao.addEventListener("click", (evento) => {
+        const teclaClicada = evento.target.value;
+
+        processarEntradaVirtual(teclaClicada);
+    });
+});
+
+function processarEntradaVirtual(tecla) {
+    const eventoSimulado = { key: tecla };
+    manipularTeclado(eventoSimulado);
+}
+
 const verificaPalpite = () => {
     const row = document.querySelectorAll(".row");
     const squares = row[rowAtual].querySelectorAll(".square");
@@ -123,11 +137,77 @@ const verificaPalpite = () => {
     });
 
     if (tentativaAtual === palavraSorteada) {
-        setTimeout(() => alert("Parabens, voce acertou!"), 100)
+        acertouPalavra();
+        window.removeEventListener("keydown", manipularTeclado);
+    }
+
+    if (rowAtual === 5) {
+        ExcedeuTentativas(palavraSorteada);
+        window.removeEventListener("keydown", manipularTeclado);
+        document.getElementById("btn-reiniciar").style.display = "block";
     }
 
 }
 
+function acertouPalavra() {
+    Toastify({
+        text: "Boa! Você acertou a palavra!",
+        duration: 10000,
+        close: true,
+        gravity: "top",
+        position: "center",
+        style: {
+            background: "linear-gradient(to right, #538D4E)"
+        }
+    }).showToast();
+}
+
+function precisaDeCincoLetras() {
+    Toastify({
+        text: "A palavra não tem 5 letras",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "center",
+        style: {
+            background: "linear-gradient(to right, #B59F3B)"
+        }
+    }).showToast();
+}
+
+function ExcedeuTentativas(palavraCerta) {
+    Toastify({
+        text: `Acabou as chances! A palavra correta era: ${palavraCerta}`,
+        duration: 10000,
+        close: true,
+        gravity: "top",
+        position: "center",
+        style: {
+            background: "linear-gradient(to right, #ff5f6d)"
+        }
+    }).showToast();
+}
+
+function reiniciarJogo() {
+    tentativaAtual = "";
+    rowAtual = 0;
+    palavraSorteada = "";
+
+    const squares = document.querySelectorAll(".square");
+    squares.forEach(s => {
+        s.textContent = "";
+        s.classList.remove("correta", "presente", "ausente");
+    });
+
+    const botoes = document.querySelectorAll(".button");
+    botoes.forEach(b => b.classList.remove("correta", "presente", "ausente"));
+
+    window.addEventListener("keydown", manipularTeclado);
+
+    iniciarJogo();
+
+    Toastify({ text: "Jogo Reiniciado!" }).showToast();
+}
 
 window.addEventListener("keydown", manipularTeclado);
 

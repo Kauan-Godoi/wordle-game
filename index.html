@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wordle</title>
     <link rel="stylesheet" href="/styles/app.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
+
 <body>
     <header><img src="/assets/img/Logo.svg" alt="Logo Wordle"></header>
     <hr>
@@ -24,43 +27,7 @@
                     <div class="square">
                     </div>
                 </div>
-                 <div class="row">
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                </div>
-                 <div class="row">
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                </div>
-                 <div class="row">
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                </div>
-                 <div class="row">
+                <div class="row">
                     <div class="square">
                     </div>
                     <div class="square">
@@ -84,45 +51,87 @@
                     <div class="square">
                     </div>
                 </div>
-            </div>      
+                <div class="row">
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                </div>
+            </div>
         </section>
         <section id="teclado">
             <div class="Linha">
-                <button class="button" id="Q">Q</button>
-                <button class="button" id="W">W</button>
-                <button class="button" id="E">E</button>
-                <button class="button" id="R">R</button>
-                <button class="button" id="T">T</button>
-                <button class="button" id="Y">Y</button>
-                <button class="button" id="U">U</button>
-                <button class="button" id="I">I</button>
-                <button class="button" id="O">O</button>
-                <button class="button" id="P">P</button>
+                <button class="button" value="Q">Q</button>
+                <button class="button" value="W">W</button>
+                <button class="button" value="E">E</button>
+                <button class="button" value="R">R</button>
+                <button class="button" value="T">T</button>
+                <button class="button" value="Y">Y</button>
+                <button class="button" value="U">U</button>
+                <button class="button" value="I">I</button>
+                <button class="button" value="O">O</button>
+                <button class="button" value="P">P</button>
             </div>
             <div class="Linha">
-                <button class="button" id="A">A</button>
-                <button class="button" id="S">S</button>
-                <button class="button" id="D">D</button>
-                <button class="button" id="F">F</button>
-                <button class="button" id="G">G</button>
-                <button class="button" id="H">H</button>
-                <button class="button" id="J">J</button>
-                <button class="button" id="K">K</button>
-                <button class="button" id="L">L</button>
+                <button class="button" value="A">A</button>
+                <button class="button" value="S">S</button>
+                <button class="button" value="D">D</button>
+                <button class="button" value="F">F</button>
+                <button class="button" value="G">G</button>
+                <button class="button" value="H">H</button>
+                <button class="button" value="J">J</button>
+                <button class="button" value="K">K</button>
+                <button class="button" value="L">L</button>
             </div>
             <div class="Linha">
-                <button class="button" id="enter">ENTER</button>
-                <button class="button" id="Z">Z</button>
-                <button class="button" id="X">X</button>
-                <button class="button" id="C">C</button>
-                <button class="button" id="V">V</button>
-                <button class="button" id="B">B</button>
-                <button class="button" id="N">N</button>
-                <button class="button" id="M">M</button>
-                <button class="button" id="backspace">⌫</button>
+                <button class="button" id="ENTER" value="ENTER">ENTER</button>
+                <button class="button" value="Z">Z</button>
+                <button class="button" value="X">X</button>
+                <button class="button" value="C">C</button>
+                <button class="button" value="V">V</button>
+                <button class="button" value="B">B</button>
+                <button class="button" value="N">N</button>
+                <button class="button" value="M">M</button>
+                <button class="button" id="BACKSPACE" value="BACKSPACE">⌫</button>
             </div>
+
         </section>
+        <button id="btn-reiniciar" style="display: none;" onclick="reiniciarJogo()">
+            Jogar Novamente
+        </button>
     </main>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="./script/app.js"></script>
 </body>
+
 </html>
