@@ -93,6 +93,20 @@ const atualizaTeclado = (letra, classe) => {
     });
 };
 
+const botoesTeclado = document.querySelectorAll(".button");
+botoesTeclado.forEach((botao) => {
+    botao.addEventListener("click", (evento) => {
+        const teclaClicada = evento.target.value;
+
+        processarEntradaVirtual(teclaClicada);
+    });
+});
+
+function processarEntradaVirtual(tecla) {
+    const eventoSimulado = { key: tecla };
+    manipularTeclado(eventoSimulado);
+}
+
 const verificaPalpite = () => {
     const row = document.querySelectorAll(".row");
     const squares = row[rowAtual].querySelectorAll(".square");

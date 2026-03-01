@@ -111,8 +111,8 @@ main {
     font-weight: bold;
 }
 
-#enter,
-#backspace {
+#ENTER,
+#BACKSPACE {
     min-width: 80px;
 }
 
