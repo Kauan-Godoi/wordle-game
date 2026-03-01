@@ -38,7 +38,6 @@ const manipularTeclado = (evento) => {
         tentativaAtual = tentativaAtual.slice(0, -1);
         atualizarInterface();
         console.log("Apagou: ", tentativaAtual);
-        atualizarInterface();
         return;
     }
 
@@ -49,7 +48,7 @@ const manipularTeclado = (evento) => {
             rowAtual++;
             tentativaAtual = "";
         } else {
-            alert("Presisa 5 letras!")
+            precisaDeCincoLetras();
         }
         return;
     }
@@ -58,7 +57,6 @@ const manipularTeclado = (evento) => {
         tentativaAtual += tecla;
         atualizarInterface();
         console.log("Digitou:", tentativaAtual);
-        atualizarInterface();
     }
 
 }
