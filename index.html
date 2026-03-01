@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wordle</title>
     <link rel="stylesheet" href="/styles/app.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
+
 <body>
     <header><img src="/assets/img/Logo.svg" alt="Logo Wordle"></header>
     <hr>
@@ -24,43 +27,7 @@
                     <div class="square">
                     </div>
                 </div>
-                 <div class="row">
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                </div>
-                 <div class="row">
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                </div>
-                 <div class="row">
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                    <div class="square">
-                    </div>
-                </div>
-                 <div class="row">
+                <div class="row">
                     <div class="square">
                     </div>
                     <div class="square">
@@ -84,7 +51,43 @@
                     <div class="square">
                     </div>
                 </div>
-            </div>      
+                <div class="row">
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                    <div class="square">
+                    </div>
+                </div>
+            </div>
         </section>
         <section id="teclado">
             <div class="Linha">
@@ -121,8 +124,14 @@
                 <button class="button" id="M">M</button>
                 <button class="button" id="backspace">⌫</button>
             </div>
+
         </section>
+        <button id="btn-reiniciar" style="display: none;" onclick="reiniciarJogo()">
+            Jogar Novamente
+        </button>
     </main>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="./script/app.js"></script>
 </body>
+
 </html>
