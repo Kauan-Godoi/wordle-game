@@ -13,7 +13,8 @@ O objetivo é adivinhar uma palavra secreta de 5 letras em até 6 tentativas. O 
 Você pode testar o jogo agora mesmo clicando no link abaixo:
 👉 [(https://kauan-godoi.github.io/wordle-game/)]
 
-🛠️ Tecnologias Utilizadas
+🛠️ Tecnologias Utilizadas:
+
 HTML5 para a estrutura do tabuleiro e teclado virtual.
 
 CSS3 para o layout (estilo Dark Mode) e responsividade para dispositivos móveis.
@@ -24,6 +25,7 @@ Toastify JS para as notificações flutuantes na tela.
 
 🧠 O que eu aprendi
 Neste desafio, foquei em evoluir minhas habilidades técnicas e de organização:
+
 
 Manipulação de Arrays: Filtragem e comparação de letras entre o palpite e a palavra sorteada.
 
