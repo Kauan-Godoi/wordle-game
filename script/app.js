@@ -23,10 +23,12 @@ let tentativaAtual = "";
 const limiteLetras = 5;
 let rowAtual = 0;
 let palavraSorteada = "";
+let listaPalavrasCompleta = [];
 
 async function iniciarJogo() {
     const palavras = await carregarDatabase();
-    palavraSorteada = escolherPalavraAleatoria(palavras).toUpperCase();
+    listaPalavrasCompleta = palavras.map(p => p.toUpperCase());
+    palavraSorteada = escolherPalavraAleatoria(listaPalavrasCompleta).toUpperCase();
 
     console.log("A palavra sorteada é: ", palavraSorteada);
 }
@@ -37,16 +39,16 @@ const manipularTeclado = (evento) => {
     if (tecla === "BACKSPACE") {
         tentativaAtual = tentativaAtual.slice(0, -1);
         atualizarInterface();
-        console.log("Apagou: ", tentativaAtual);
         return;
     }
 
     if (tecla === "ENTER") {
         if (tentativaAtual.length === limiteLetras) {
-            verificaPalpite();
-
-            rowAtual++;
-            tentativaAtual = "";
+            if (validarPalavraExistente()) {
+                verificaPalpite();
+                rowAtual++;
+                tentativaAtual = "";
+            }
         } else {
             precisaDeCincoLetras();
         }
@@ -56,9 +58,11 @@ const manipularTeclado = (evento) => {
     if (/^[A-Z]$/.test(tecla) && tentativaAtual.length < limiteLetras) {
         tentativaAtual += tecla;
         atualizarInterface();
-        console.log("Digitou:", tentativaAtual);
     }
 
+    if (tentativaAtual.length === limiteLetras) {
+        validarPalavraExistente();
+    }
 }
 
 const atualizarInterface = () => {
@@ -136,12 +140,13 @@ const verificaPalpite = () => {
 
     if (tentativaAtual === palavraSorteada) {
         acertouPalavra();
-        window.removeEventListener("keydown", manipularTeclado);
+        globalThis.removeEventListener("keydown", manipularTeclado);
+        document.getElementById("btn-reiniciar").style.display = "block";
     }
 
     if (rowAtual === 5) {
         ExcedeuTentativas(palavraSorteada);
-        window.removeEventListener("keydown", manipularTeclado);
+        globalThis.removeEventListener("keydown", manipularTeclado);
         document.getElementById("btn-reiniciar").style.display = "block";
     }
 
@@ -186,7 +191,25 @@ function ExcedeuTentativas(palavraCerta) {
     }).showToast();
 }
 
+const validarPalavraExistente = () => {
+    if (tentativaAtual.length === limiteLetras) {
+        if (!listaPalavrasCompleta.includes(tentativaAtual)) {
+            Toastify({
+                text: "Essa palavra não consta no nosso dicionário!",
+                duration: 2000,
+                gravity: "top",
+                position: "center",
+                style: { background: "linear-gradient(to right, #E74C3C, #C0392B)" }
+            }).showToast();
+            return false;
+        }
+    }
+    return true;
+};
+
 function reiniciarJogo() {
+    document.getElementById("btn-reiniciar").style.display = "none";
+
     tentativaAtual = "";
     rowAtual = 0;
     palavraSorteada = "";
@@ -200,13 +223,26 @@ function reiniciarJogo() {
     const botoes = document.querySelectorAll(".button");
     botoes.forEach(b => b.classList.remove("correta", "presente", "ausente"));
 
-    window.addEventListener("keydown", manipularTeclado);
+    globalThis.addEventListener("keydown", manipularTeclado);
 
     iniciarJogo();
 
     Toastify({ text: "Jogo Reiniciado!" }).showToast();
 }
 
-window.addEventListener("keydown", manipularTeclado);
+globalThis.addEventListener("keydown", manipularTeclado);
 
-iniciarJogo();   
+iniciarJogo();
+
+Toastify({
+    text: "Não usamos palavras com com acentos e nem com 'Ç'! \n Caso queira usar uma palavra com 'Ç' sugiro usar 'C' no lugar \n Ex: AÇOES -> ACOES \n Caso queira usar uma palavra com acentos, sugiro usar a letra sem acentos \n Ex: ENTÃO -> ENTAO",
+    duration: 10000,
+    close: true,
+    gravity: "top",
+    position: "left",
+    style: {
+        background: "#B59F3B",
+        marginTop: "200px",
+        marginLeft: "100px"
+    }
+}).showToast();
