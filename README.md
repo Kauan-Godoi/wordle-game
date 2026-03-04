@@ -36,10 +36,15 @@ Clean Code (Código Limpo): Apliquei boas práticas para deixar o código mais l
 Deploy: Configuração e publicação do projeto no GitHub Pages.
 
 📂 Estrutura do Projeto
-├── assets/img/     # Imagens e logotipos
-├── json/           # Banco de dados de palavras
-├── script/         # Lógica em JavaScript
+
+├── assets/img/     -> Imagens e logotipos
+
+├── json/           -> Banco de dados de palavras
+
+├── script/         -> Lógica em JavaScript
+
 ├── styles/         # Estilização CSS
+
 └── index.html      # Página principal
 
 Feito por [Kauan Godoi].
