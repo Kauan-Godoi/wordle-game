@@ -19,10 +19,11 @@ main {
     background-color: #14161C;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
     gap: 20px;
     min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 65px);
 }
 
 .container-board {
@@ -53,6 +54,7 @@ main {
     text-transform: uppercase;
     line-height: 1;
 }
+
 .square:not(:empty) {
     border-color: #818384;
 }
@@ -62,11 +64,13 @@ main {
     border-color: #538D4E;
     color: white;
 }
+
 .square.presente {
     background-color: #B59F3B;
     border-color: #B59F3B;
     color: white;
 }
+
 .square.ausente {
     background-color: #3A3A3C;
     border-color: #3A3A3C;
@@ -90,20 +94,29 @@ main {
     transition: 0.2s;
     text-transform: uppercase;
 }
+
 .button:hover {
     background-color: #787878;
     transform: scale(1.05);
     filter: brightness(0.8);
 }
 
-.button.correta {background-color: #538D4E;}
-.button.presente {background-color: #B59F3B;}
-.button.ausente {background-color: #3A3A3C;}
+.button.correta {
+    background-color: #538D4E;
+}
+
+.button.presente {
+    background-color: #B59F3B;
+}
+
+.button.ausente {
+    background-color: #3A3A3C;
+}
 
 #btn-reiniciar {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #538D4E;
+    background-color: #B59F3B;
     color: white;
     border: none;
     border-radius: 5px;
@@ -122,7 +135,6 @@ main {
     gap: 8px;
     width: 100%;
     max-width: 500px;
-    margin-top: 20px;
 }
 
 .Linha {
@@ -130,4 +142,55 @@ main {
     justify-content: center;
     gap: 6px;
     width: 100%;
+}
+
+.Toastify__toast-body {
+    white-space: pre-line;
+}
+
+@media (max-width: 450px) {
+    header {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    header img {
+        height: auto;
+        width: 40px;
+    }
+
+    .square {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+
+    #board {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    #teclado {
+        margin-top: 20px;
+        width: 90%;
+        padding: 0 5px;
+    }
+
+    .button {
+        height: 40px;
+        min-width: 30px;
+        font-size: 14px;
+        font-weight: lighter;
+    }
+
+    #ENTER,
+    #BACKSPACE {
+        min-width: 55px;
+        font-size: 12px;
+    }
+
+    #BACKSPACE {
+        font-size: 20px;
+    }
 }
