@@ -30,7 +30,6 @@ async function iniciarJogo() {
     listaPalavrasCompleta = palavras.map(p => p.toUpperCase());
     palavraSorteada = escolherPalavraAleatoria(listaPalavrasCompleta).toUpperCase();
 
-    console.log("A palavra sorteada é: ", palavraSorteada);
 }
 
 const manipularTeclado = (evento) => {
