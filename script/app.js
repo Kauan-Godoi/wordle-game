@@ -1,7 +1,7 @@
 const carregarDatabase = async () => {
 
     try {
-        const conexao = await fetch('/json/database.json');
+        const conexao = await fetch('./json/database.json');
 
         const database = await conexao.json();
 
